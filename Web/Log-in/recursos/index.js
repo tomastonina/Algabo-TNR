@@ -25,15 +25,26 @@ app.set('view engine', '.hbs');
 //Peticiones al servidor
 
 app.use(morgan('dev'));
-app.use(express.urlencoded())
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 //Variables Globales
+
+app.use((req, res, next) =>{
+    next();
+});
 
 //Rutas
 
 app.use(require ('./rutas/index-rutas'));
+app.use(require ('./rutas/autenticacion'));
+app.use('/links', require ('./rutas/links'));
+
+
 
 //Archivos Publicos
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Iniciar el Servidor
 
