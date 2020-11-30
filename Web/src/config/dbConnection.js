@@ -3,7 +3,7 @@ const mysql = require("mysql");
 module.exports = () => {
     return mysql.createConnection({
         host:"localhost",
-        database:"algabo_tnr",
+        database:"algabo-tnr",
         user:"root",
         password:""
     });
